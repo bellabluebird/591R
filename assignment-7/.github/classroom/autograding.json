@@ -1,0 +1,104 @@
+{
+  "tests": [
+    {
+      "name": "Data Loading and Reduction: should have the correct column names",
+      "setup": "awk -F '\t' '$1 == 1 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 1 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Data Loading and Reduction: should have the correct number of rows and columns",
+      "setup": "awk -F '\t' '$1 == 2 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 2 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Data Loading and Reduction: should be a data.frame",
+      "setup": "awk -F '\t' '$1 == 3 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 3 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "DESeq2 Functionality: should return a DESeqResults object",
+      "setup": "awk -F '\t' '$1 == 4 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 4 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "DESeq2 Functionality: should have the correct dimensions",
+      "setup": "awk -F '\t' '$1 == 5 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 5 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "DESeq2 Functionality: should have pvalue and padj columns",
+      "setup": "awk -F '\t' '$1 == 6 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 6 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "edgeR Functionality: should have the correct column names",
+      "setup": "awk -F '\t' '$1 == 7 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 7 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "edgeR Functionality: should have the correct dimensions",
+      "setup": "awk -F '\t' '$1 == 8 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 8 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Limma + Voom Integration: should have the correct dimensions",
+      "setup": "awk -F '\t' '$1 == 9 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 9 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Limma + Voom Integration: should have the correct column names",
+      "setup": "awk -F '\t' '$1 == 10 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 10 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    }
+  ]
+}

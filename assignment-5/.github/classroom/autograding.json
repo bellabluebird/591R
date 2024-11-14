@@ -1,0 +1,364 @@
+{
+  "tests": [
+    {
+      "name": "read_data(): returns a tibble, not a dataframe",
+      "setup": "awk -F '\t' '$1 == 1 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 1 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "read_data(): has no rownames, tibbles do not use rownames",
+      "setup": "awk -F '\t' '$1 == 2 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 2 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "read_data(): returns a tibble with 55416 rows and 9 columns",
+      "setup": "awk -F '\t' '$1 == 3 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 3 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "read_data(): has the correct column names",
+      "setup": "awk -F '\t' '$1 == 4 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 4 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "read_data(): has a gene column that stores characters",
+      "setup": "awk -F '\t' '$1 == 5 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 5 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "read_data(): returns sample columns that are all numeric",
+      "setup": "awk -F '\t' '$1 == 6 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 6 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "filter_zero_var_genes(): should return a tibble",
+      "setup": "awk -F '\t' '$1 == 7 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 7 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "filter_zero_var_genes(): should have exactly 999 rows and 5 columns",
+      "setup": "awk -F '\t' '$1 == 8 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 8 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "filter_zero_var_genes(): if this test fails, you are filtering too many genes",
+      "setup": "awk -F '\t' '$1 == 9 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 9 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "filter_zero_var_genes(): if this test fails, you are not filtering enough genes",
+      "setup": "awk -F '\t' '$1 == 10 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 10 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "filter_zero_var_genes(): should remove both CJNN53716 and WHGN65413",
+      "setup": "awk -F '\t' '$1 == 11 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 11 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "timepoint_from_sample(): works on the example case of vAd_1 and returns Ad",
+      "setup": "awk -F '\t' '$1 == 12 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 12 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "timepoint_from_sample(): works on a second example case of vP7_2 and returns P7",
+      "setup": "awk -F '\t' '$1 == 13 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 13 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "timepoint_from_sample(): works on strings with numbers not ending in 1 or 2",
+      "setup": "awk -F '\t' '$1 == 14 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 14 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "timepoint_from_sample(): works on capital letters and numbers that aren't found in the samples",
+      "setup": "awk -F '\t' '$1 == 15 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 15 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "timepoint_from_sample(): works when there is also a 1 somewhere in the string before the delimiter",
+      "setup": "awk -F '\t' '$1 == 16 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 16 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "sample_replicate(): returns the right string in the most basic case",
+      "setup": "awk -F '\t' '$1 == 17 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 17 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "sample_replicate(): correctly ignores numbers that are before the delimiter",
+      "setup": "awk -F '\t' '$1 == 18 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 18 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "sample_replicate(): correctly captures any number, not just 1 or 2",
+      "setup": "awk -F '\t' '$1 == 19 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 19 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "sample_replicate(): correctly captures any number, not just 1 or 2",
+      "setup": "awk -F '\t' '$1 == 20 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 20 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "meta_info_from_labels(): returns a tibble, not a dataframe",
+      "setup": "awk -F '\t' '$1 == 21 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 21 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "meta_info_from_labels(): returns exactly 3 columns and 4 rows based on the data",
+      "setup": "awk -F '\t' '$1 == 22 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 22 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "meta_info_from_labels(): returns the right column names sample, timepoint and replicate",
+      "setup": "awk -F '\t' '$1 == 23 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 23 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "meta_info_from_labels(): returns the right row information parsed from the correspondine sample name",
+      "setup": "awk -F '\t' '$1 == 24 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 24 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "meta_info_from_labels(): returns the right row information parsed from the correspondine sample name",
+      "setup": "awk -F '\t' '$1 == 25 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 25 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "get_library_size(): returns a tibble, not a dataframe and not a named vector",
+      "setup": "awk -F '\t' '$1 == 26 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 26 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "get_library_size(): returns tibbles with either 4 rows and 2 columns, or 1 row and 4 columns",
+      "setup": "awk -F '\t' '$1 == 27 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 27 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "get_library_size(): returns the correct summed values for each column if tibble 1x4",
+      "setup": "awk -F '\t' '$1 == 28 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 28 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "normalize_by_cpm(): returns a tibble, not a dataframe",
+      "setup": "awk -F '\t' '$1 == 29 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 29 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "normalize_by_cpm(): returns exactly 1000 rows and 5 columns",
+      "setup": "awk -F '\t' '$1 == 30 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 30 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "normalize_by_cpm(): should contain all the genes found in the original",
+      "setup": "awk -F '\t' '$1 == 31 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 31 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "normalize_by_cpm(): should correctly calculate CPM, testing a subset of known values",
+      "setup": "awk -F '\t' '$1 == 32 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 32 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "deseq_normalize(): returns a tibble, not a dataframe",
+      "setup": "awk -F '\t' '$1 == 33 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 33 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "deseq_normalize(): returns a tibble with exactly 1000 rows and 5 columns",
+      "setup": "awk -F '\t' '$1 == 34 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 34 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "deseq_normalize(): should have the same number of genes as the raw data",
+      "setup": "awk -F '\t' '$1 == 35 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 35 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "deseq_normalize(): should correctly perform DESeq2 normalization, testing a subset of known values",
+      "setup": "awk -F '\t' '$1 == 36 { print \"testnum:\", $1, \"\\nresult:\", $2, \"\\ntest:\", $3, \"\\nmessage:\", $4; exit}' test_results.csv",
+      "run": "awk -F '\t' '$1 == 36 { print; exit}' test_results.csv | grep -q -e 'success' -e 'warning'",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    }
+  ]
+}
